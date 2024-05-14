@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Security Code Scan Rule set" Description="Rule set for customizing Security Code Scan rule severity"
+         ToolsVersion="17.0">
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
+        <Rule Id="CA1014" Action="None"/>
+    </Rules>
+    <Rules AnalyzerId="SecurityCodeScan" RuleNamespace="SecurityCodeScan">
+        <Rule Id="SCS0012" Action="Info"/>
+        <Rule Id="SCS0016" Action="Info"/>
+    </Rules>
+</RuleSet>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="JPI Cloud Rule set" ToolsVersion="17.0">
+    <Include Path="roslyn.ruleset" Action="Default"/>
+    <Include Path="security.ruleset" Action="Default"/>
+    <Include Path="stylecop.ruleset" Action="Default"/>
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+        <Rule Id="CS1591" Action="None"/>
+    </Rules>
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
+        <Rule Id="CA1014" Action="None"/>
+    </Rules>
+</RuleSet>

@@ -1,0 +1,226 @@
+﻿# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+  - main
+  - release/*
+
+resources:
+  - repo: self
+
+variables:
+  # General
+  solution: "Lynkco.Warranty.WebAPI"
+
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: "d24170fb-cbe7-4823-9c65-cf0ee925a342"
+  containerRegistry: "lncacr.azurecr.io"
+  tag: "$(Build.BuildId)"
+
+  # Variables for Swagger generation
+  dllPath: "bin/Release/net6.0"
+  externalProject: "$(solution).External"
+  swaggerWarrantyVersion: "warranty-pre-approval-v1"
+  swaggerVehicleVersion: "vehicle-warranty-v1"
+
+  # Agent VM image name
+  # vmImageName: 'ubuntu-latest'
+  vmImage: windows-latest
+
+parameters:
+  # Web API projects params
+  - name: webApiProjects
+    type: object
+    default:
+      - name: "$(solution).Host"
+        displayName: "API"
+        repository: "lynkcowarrantywebapi"
+      - name: "$(solution).External"
+        displayName: "External API"
+        repository: "lynkcowarrantywebapiexternal"
+
+  # Azure Function projects params
+  - name: azureFunctionProjects
+    type: object
+    default:
+      - name: "$(solution).ProcessExternalData"
+        displayName: "ProcessExternalData"
+        outputName: "processexternaldata"
+      - name: "$(solution).ProcessInternalData"
+        displayName: "ProcessInternalData"
+        outputName: "processinternaldata"
+
+  # Swagger params for API projects
+  - name: swaggerParams
+    type: object
+    default:
+      - env: "dev"
+        externalApiUrl: "$(DEV_URL)"
+      - env: "sit"
+        externalApiUrl: "$(SIT_URL)"
+      - env: "uat"
+        externalApiUrl: "$(UAT_URL)"
+      - env: "prod"
+        externalApiUrl: "$(PROD_URL)"
+
+stages:
+  - stage: build_docker_images
+    displayName: "Build docker images"
+    jobs:
+      - ${{ each project in parameters.webApiProjects }}:
+          - job:
+            displayName: "Build ${{ project.displayName }} Docker image"
+            steps:
+              - task: Docker@2
+                displayName: "${{ project.displayName }} - Build and push an image to container registry"
+                inputs:
+                  command: buildAndPush
+                  repository: ${{ project.repository }}
+                  dockerfile: "$(Build.SourcesDirectory)/${{ project.name }}/Dockerfile"
+                  containerRegistry: $(dockerRegistryServiceConnection)
+                  buildContext: $(Build.SourcesDirectory)
+                  tags: |
+                    $(tag)
+                    latest
+
+  - stage: generate_swagger_files
+    displayName: "Generate swagger.json files"
+    jobs:
+      - job: generate_swagger_files_external_api
+        displayName: "Generate swagger.json files for External API"
+        pool:
+          vmImage: windows-latest
+        variables:
+          - group: EXTERNAL_API
+        steps:
+          - task: DotNetCoreCLI@2
+            displayName: "Restore tools"
+            inputs:
+              command: custom
+              custom: tool
+              arguments: restore --tool-manifest ./$(externalProject)/.config/dotnet-tools.json
+
+          - task: DotNetCoreCLI@2
+            displayName: "Build External API project"
+            inputs:
+              command: build
+              projects: "**/$(externalProject).csproj"
+              arguments: --configuration Release
+
+          - ${{ each param in parameters.swaggerParams }}:
+              - script: |
+                  mkdir $(System.DefaultWorkingDirectory)\swagger\$(externalProject)\${{ param.env }}\PreApproval
+                displayName: "Create swagger warranty folder for ${{ upper(param.env) }} env"
+
+              - script: |
+                  mkdir $(System.DefaultWorkingDirectory)\swagger\$(externalProject)\${{ param.env }}\VehicleWarranty
+                displayName: "Create swagger vehicle folder for ${{ upper(param.env) }} env"
+
+              - task: DotNetCoreCLI@2
+                displayName: 'Generate Swagger "$(swaggerWarrantyVersion)" for ${{ upper(param.env) }} env'
+                inputs:
+                  command: custom
+                  custom: swagger
+                  arguments: tofile --host ${{ param.externalApiUrl }} --output $(System.DefaultWorkingDirectory)/swagger/$(externalProject)/${{ param.env }}/PreApproval/swagger.json $(System.DefaultWorkingDirectory)/$(externalProject)/$(dllPath)/$(externalProject).dll $(swaggerWarrantyVersion)
+                  workingDirectory: "$(System.DefaultWorkingDirectory)/$(externalProject)"
+
+              - task: PublishBuildArtifacts@1
+                displayName: "Publish Artifacts from /${{ param.env }}"
+                inputs:
+                  pathToPublish: "$(System.DefaultWorkingDirectory)/swagger/$(externalProject)/${{ param.env }}/PreApproval/swagger.json"
+                  artifactName: "externalApi${{ upper(param.env) }}_PreApproval"
+
+              - task: DotNetCoreCLI@2
+                displayName: 'Generate Swagger "$(swaggerVehicleVersion)" for ${{ upper(param.env) }} env'
+                inputs:
+                  command: custom
+                  custom: swagger
+                  arguments: tofile --host ${{ param.externalApiUrl }} --output $(System.DefaultWorkingDirectory)/swagger/$(externalProject)/${{ param.env }}/VehicleWarranty/swagger.json $(System.DefaultWorkingDirectory)/$(externalProject)/$(dllPath)/$(externalProject).dll $(swaggerVehicleVersion)
+                  workingDirectory: "$(System.DefaultWorkingDirectory)/$(externalProject)"
+
+              - task: PublishBuildArtifacts@1
+                displayName: "Publish Artifacts from /${{ param.env }}"
+                inputs:
+                  pathToPublish: "$(System.DefaultWorkingDirectory)/swagger/$(externalProject)/${{ param.env }}/VehicleWarranty/swagger.json"
+                  artifactName: "externalApi${{ upper(param.env) }}_VehicleWarranty"
+
+  - stage: build_dotnet_azure_function_projects
+    displayName: "Build and Publish .NET Azure Functions"
+    jobs:
+      - ${{ each project in parameters.azureFunctionProjects }}:
+          - job:
+            displayName: 'Build and Publish "${{ project.displayName }}"'
+            steps:
+              - script: |
+                  dotnet build ./${{ project.name }} --configuration Release
+                displayName: "Build"
+
+              - task: DotNetCoreCLI@2
+                displayName: "Publish"
+                inputs:
+                  command: publish
+                  arguments: --configuration Release --output publish_output_${{ project.outputName }}
+                  projects: "**/${{ project.name }}.csproj"
+                  publishWebProjects: false
+                  modifyOutputPath: false
+                  zipAfterPublish: false
+
+              - task: ArchiveFiles@2
+                displayName: "Archive files"
+                inputs:
+                  rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output_${{ project.outputName }}"
+                  includeRootFolder: false
+                  archiveFile: "$(System.DefaultWorkingDirectory)/build_${{ project.outputName }}_$(Build.BuildId).zip"
+
+              - task: PublishBuildArtifacts@1
+                displayName: "Publish build artifacts"
+                inputs:
+                  PathtoPublish: "$(System.DefaultWorkingDirectory)/build_${{ project.outputName }}_$(Build.BuildId).zip"
+                  artifactName: "drop"
+
+  - stage: publish_bicep
+    displayName: "Publish Bicep templates"
+    jobs:
+      - job:
+        displayName: "Publish Bicep templates"
+        steps:
+          - task: CopyFiles@2
+            displayName: "Include templates in the artifact"
+            inputs:
+              SourceFolder: "Bicep"
+              Contents: "**"
+              TargetFolder: "$(Build.ArtifactStagingDirectory)/Bicep/"
+
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish templates artifact"
+            inputs:
+              PathtoPublish: "$(Build.ArtifactStagingDirectory)/Bicep/"
+              artifactName: "bicep"
+
+  - stage: run_tests_publish_code_coverage_release
+    displayName: "Run tests and publish code coverage results from the release branch"
+    jobs:
+      - job:
+        displayName: "Run tests and publish code coverage results from the release branch"
+        condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')
+        steps:
+          - task: DotNetCoreCLI@2
+            displayName: "Run tests and collect code coverage"
+            inputs:
+              command: test
+              projects: "**/*Test/*.csproj"
+              arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+
+          - task: reportgenerator@5
+            displayName: Create reports
+            inputs:
+              reports: "$(Agent.TempDirectory)/**/coverage.cobertura.xml"
+              targetdir: "$(Build.SourcesDirectory)/coverlet/reports"
+
+          - task: PublishCodeCoverageResults@1
+            displayName: "Publish code coverage results"
+            inputs:
+              codeCoverageTool: "Cobertura"
+              summaryFileLocation: "$(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml"
+              failIfCoverageEmpty: true
