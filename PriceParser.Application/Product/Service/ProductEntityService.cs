@@ -27,10 +27,7 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service
 			return createdVehicle;
 		}
 
-		public override async Task<ProductEntity> UpdateAsync(ProductEntity vehicleWarranty, CancellationToken ct)
-			=> await UpdateAsync(vehicleWarranty, false, ct);
-
-		public async Task<ProductEntity> UpdateAsync(ProductEntity vehicle, bool triggerUpdateEvent, CancellationToken ct)
+		public override async Task<ProductEntity> UpdateAsync(ProductEntity vehicle, CancellationToken ct)
 		{
 			var updatedVehicle = await base.UpdateAsync(vehicle, ct);
 			return updatedVehicle;
@@ -42,6 +39,27 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service
 
 			AmazonProductModel amazonProduct = JsonConvert.DeserializeObject<AmazonProductModel>(data);
 			var product = _mapper.Map(amazonProduct);
+
+			return product;
+		}
+
+		public async Task<ProductEntity> ScrapeProduct(string url, CancellationToken ct)
+		{
+			var product = await FetchProduct(url, ct);
+			product.Url = url;
+
+			var existingProduct = (await FindAsync(x => x.Url == url, ct)).FirstOrDefault();
+			if (existingProduct is null)
+			{
+				product = await CreateAsync(product, ct);
+			}
+			else
+			{
+				product.Id = existingProduct.Id;
+				product.UserEmail = existingProduct.UserEmail;
+				product.PriceHistory = existingProduct.PriceHistory.Concat(product.PriceHistory).ToList();
+				product = await UpdateAsync(product, ct);
+			}
 
 			return product;
 		}

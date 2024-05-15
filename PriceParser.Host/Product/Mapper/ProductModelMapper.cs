@@ -6,12 +6,12 @@ using Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Models;
 
 namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Mapper
 {
-	public class VehicleWarrantyModelMapper : MapperBase<ProductEntity, VehicleWarrantyModel>
+	public class ProductModelMapper : MapperBase<ProductEntity, ProductModel>
 	{
 		private readonly ITimezoneOffsetProvider _timezoneOffsetProvider;
 		private readonly IEpochHelper _epochHelper;
 
-		public VehicleWarrantyModelMapper(
+		public ProductModelMapper(
 			ITimezoneOffsetProvider timezoneOffsetProvider,
 			IEpochHelper epochHelper)
 		{
@@ -19,9 +19,9 @@ namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Mapper
 			_epochHelper = epochHelper;
 		}
 
-		public override VehicleWarrantyModel Map(ProductEntity source)
+		public override ProductModel Map(ProductEntity source)
 		{
-			var result = new VehicleWarrantyModel()
+			var result = new ProductModel()
 			{
 				Id = source.Id,
 			};

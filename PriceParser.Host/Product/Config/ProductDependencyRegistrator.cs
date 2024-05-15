@@ -7,11 +7,11 @@ using System.Diagnostics.CodeAnalysis;
 namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Config
 {
 	[ExcludeFromCodeCoverage]
-	public static class VehicleWarrantyDependencyRegistrator
+	public static class ProductDependencyRegistrator
 	{
 		public static void RegisterDependencies(this IServiceCollection services)
 		{
-			services.AddTransient<IMapper<ProductEntity, VehicleWarrantyModel>, VehicleWarrantyModelMapper>();
+			services.AddTransient<IMapper<ProductEntity, ProductModel>, ProductModelMapper>();
 		}
 	}
 }

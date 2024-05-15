@@ -7,10 +7,11 @@ import { addUserEmailToProduct } from "@/lib/actions";
 
 interface Props {
   productId: string;
+  productUserEmail?: string | null;
 }
 
-const Modal = ({ productId }: Props) => {
-  let [isOpen, setIsOpen] = useState(true);
+const Modal = ({ productId, productUserEmail }: Props) => {
+  let [isOpen, setIsOpen] = useState(!productUserEmail);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
 
@@ -67,12 +68,12 @@ const Modal = ({ productId }: Props) => {
               <div className="dialog-content">
                 <div className="flex flex-col">
                   <div className="flex justify-between">
-                    <div className="p-3 border border-gray-200 rounded-10">
+                    <div>
                       <Image
                         src="/assets/icons/logo.svg"
                         alt="logo"
-                        width={28}
-                        height={28}
+                        width={48}
+                        height={48}
                       />
                     </div>
 
@@ -101,7 +102,7 @@ const Modal = ({ productId }: Props) => {
                     htmlFor="email"
                     className="text-sm font-medium text-gray-700"
                   >
-                    Email address
+                    {productUserEmail ? `Current email address: ${productUserEmail}` : "Email address"}
                   </label>
                   <div className="dialog-input_container">
                     <Image

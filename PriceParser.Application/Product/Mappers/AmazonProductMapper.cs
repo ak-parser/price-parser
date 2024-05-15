@@ -11,11 +11,21 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Mappers
 		{
 			return new()
 			{
-				Id = Guid.NewGuid().ToString(),
-				Name = source.Title,
+				Title = source.Title,
 				Description = source.Description,
-				Price = double.TryParse(source.Price, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out var price) ? price : 0,
+				Category = source.Category,
+				AvgRating = source.AvgRating,
+				ReviewCount = source.ReviewCount,
+				OutOfStock = source.OutOfStock,
 				Currency = "$",
+				PriceHistory = new List<PriceHistory>
+				{
+					new()
+					{
+						Date = DateTime.UtcNow,
+						Price = double.TryParse(source.Price, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out var price) ? price : 0,
+					},
+				},
 				ImageUrl = source.Images.FirstOrDefault(),
 			};
 		}

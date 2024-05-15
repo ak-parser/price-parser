@@ -14,13 +14,13 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/assets/icons/logo.svg"
-            width={27}
-            height={27}
+            width={47}
+            height={47}
             alt="logo"
           />
 
           <p className="nav-logo">
-            Shop<span className="text-primary">Savvy</span>
+            Price<span className="text-primary">Parser</span>
           </p>
         </Link>
 

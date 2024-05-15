@@ -12,7 +12,7 @@ const Home = async () => {
         <div className="flex max-xl:flex-col gap-16">
           <div className="flex flex-col justify-center">
             <p className="small-text">
-              Smart Shopping Starts Here:
+              Smart Shopping Starts Here
               <Image
                 src="/assets/icons/arrow-right.svg"
                 alt="arrow-right"
@@ -23,7 +23,7 @@ const Home = async () => {
 
             <h1 className="head-text">
               Unleash the Power of
-              <span className="text-primary"> PriceWise</span>
+              <span className="text-primary"> Shopping </span>
             </h1>
 
             <p className="mt-6">

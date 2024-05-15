@@ -5,8 +5,7 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts
 {
 	public interface IProductEntityService : IBaseInternalEntityService<ProductEntity>
 	{
-		public Task<ProductEntity> UpdateAsync(ProductEntity vehicle, bool triggerUpdateEvent, CancellationToken ct);
-
 		public Task<ProductEntity> FetchProduct(string url, CancellationToken ct);
+		public Task<ProductEntity> ScrapeProduct(string url, CancellationToken ct);
 	}
 }

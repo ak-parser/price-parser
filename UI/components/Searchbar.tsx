@@ -1,6 +1,7 @@
 "use client";
 
-import { scrapeAndStoreProduct } from "@/lib/actions";
+import { scrape } from "@/lib/actions";
+import { url } from "inspector";
 import { FormEvent, useState } from "react";
 
 const isValidProductURL = (url: string) => {
@@ -37,9 +38,12 @@ const Searchbar = () => {
       setIsLoading(true);
 
       // Scrape the product page
-      const product = await scrapeAndStoreProduct(searchPrompt);
+      const product = await scrape(searchPrompt);
 
       // redirect to the product page
+      if (product) {
+        window.location.href = `/products/${product.id}`;
+      }
     } catch (error) {
       console.log(error);
     } finally {

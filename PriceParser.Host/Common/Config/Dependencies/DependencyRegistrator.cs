@@ -16,7 +16,7 @@ namespace Lynkco.Warranty.WebAPI.Host.Common.Config.Dependencies
 			DataDependencyRegistrator.RegisterDependencies(services);
 			InfrastructureDependencyRegistrator.RegisterDependencies(services);
 
-			VehicleWarrantyDependencyRegistrator.RegisterDependencies(services);
+			ProductDependencyRegistrator.RegisterDependencies(services);
 			UserDependencyRegistrator.RegisterDependencies(services);
 
 			// Common
