@@ -1,9 +1,11 @@
+import Chart from "@/components/Chart";
 import Modal from "@/components/Modal";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
-import { getProductById } from "@/lib/actions";
+import { getProductById, getSimilarProducts } from "@/lib/actions";
 import { formatNumber, getAveragePrice, getHighestPrice, getLowestPrice } from "@/lib/utils";
 import { Product } from "@/types";
+import { randomInt } from "crypto";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -15,14 +17,14 @@ type Props = {
 const ProductDetails = async ({ params: { id } }: Props) => {
   console.log(id);
   const product = (await getProductById(id))!;
-  const currentPrice = product.priceHistory[0];
+  const currentPrice = product.priceHistory[product.priceHistory.length - 1];
   const highestPrice = getHighestPrice(product.priceHistory);
   const lowestPrice = getLowestPrice(product.priceHistory);
   const averagePrice = getAveragePrice(product.priceHistory);
 
   if (!product) redirect("/");
 
-  // const similarProducts = await getSimilarProducts(id);
+  const similarProducts = await getSimilarProducts(id);
 
   return (
     <div className="product-container">
@@ -60,7 +62,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 />
 
                 <p className="text-base font-semibold text-[#D46F77]">
-                  {127}
+                  {randomInt(100, 10000)}
                 </p>
               </div>
 
@@ -161,7 +163,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             </div>
           </div>
 
-
+          <Chart data={product.priceHistory} currency={product.currency} />
           <Modal productId={id} productUserEmail={product.userEmail} />
         </div>
       </div>
@@ -191,17 +193,17 @@ const ProductDetails = async ({ params: { id } }: Props) => {
         </button>
       </div>
 
-      {/* {similarProducts && similarProducts?.length > 0 && (
+      {similarProducts && similarProducts.length > 0 && (
         <div className="py-14 flex flex-col gap-2 w-full">
           <p className="section-text">Similar Products</p>
 
           <div className="flex flex-wrap gap-10 mt-7 w-full">
             {similarProducts.map(product => (
-              <ProductCard key={product._id} product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

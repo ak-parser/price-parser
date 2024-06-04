@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper;
+﻿using System.Globalization;
+using Lynkco.Warranty.WebAPI.Application.Common.Mapper;
 using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Models;
 using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using System.Globalization;
 
 namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Mappers
 {
@@ -23,7 +23,7 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Mappers
 					new()
 					{
 						Date = DateTime.UtcNow,
-						Price = double.TryParse(source.Price, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out var price) ? price : 0,
+						Price = double.TryParse(string.IsNullOrEmpty(source.Price) ? source.PriceWithoutDiscount : source.Price, NumberStyles.Currency, CultureInfo.GetCultureInfo("en-US"), out var price) ? price : 0,
 					},
 				},
 				ImageUrl = source.Images.FirstOrDefault(),

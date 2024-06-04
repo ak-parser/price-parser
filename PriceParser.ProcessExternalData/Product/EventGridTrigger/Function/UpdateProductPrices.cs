@@ -41,20 +41,8 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 			ILogger log,
 			CancellationToken ct)
 		{
-			// await Execute(ct);
+			await Execute(ct);
 		}
-
-		/*[FunctionName("UpdateVehicleData")]
-		public async Task Run([EventGridTrigger] EventGridEvent eventGridEvent,
-			ILogger log,
-			CancellationToken ct)
-		{
-			log.LogInformation($"EventType: {eventGridEvent.EventType}");
-			log.LogInformation($"Event Data: {eventGridEvent.Data}");
-
-			var data = JsonConvert.DeserializeObject<string>(eventGridEvent.Data.ToString());
-			await Execute(eventGridEvent.EventType, data, ct);
-		}*/
 
 		private async Task Execute(CancellationToken ct)
 		{

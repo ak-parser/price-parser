@@ -45,21 +45,18 @@ export async function scrape(url: string) {
     }
 }
 
-// export async function getSimilarProducts(productId: string) {
-//     try {
-//         const currentProduct = await Product.findById(productId);
+export async function getSimilarProducts(productId: string) {
+    try {
+        const response = await axios.get(
+            `http://localhost:5234/product/${productId}/similar`
+        );
+        const similarProducts = response.data as Product[];
 
-//         if (!currentProduct) return null;
-
-//         const similarProducts = await Product.find({
-//             _id: { $ne: productId },
-//         }).limit(3);
-
-//         return similarProducts;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+        return similarProducts;
+    } catch (error: any) {
+        console.log(`Failed to get product: ${error.message}`);
+    }
+}
 
 export async function addUserEmailToProduct(
     productId: string,

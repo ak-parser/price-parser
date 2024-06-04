@@ -7,8 +7,12 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public string Price { get; set; }
+
 		public string Category { get; set; }
 		public List<string> Images { get; set; }
+
+		[JsonProperty("price_without_discount")]
+		public string PriceWithoutDiscount { get; set; }
 
 		[JsonProperty("avg_rating")]
 		public string AvgRating { get; set; }

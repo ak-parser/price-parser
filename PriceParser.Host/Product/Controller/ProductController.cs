@@ -28,7 +28,7 @@ namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Controller
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public async Task<ActionResult<IEnumerable<ProductEntity>>> GetAll([FromQuery] PaginationParametersModel paginationModel, CancellationToken ct)
 		{
-			if (paginationModel == null)
+			if (paginationModel is null)
 			{
 				paginationModel = new PaginationParametersModel();
 			}
@@ -51,12 +51,28 @@ namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Controller
 		public async Task<ActionResult<ProductEntity>> GetById(string id, CancellationToken ct)
 		{
 			var product = await _service.GetItemByKeyAsync(id, ct);
-			if (product == null)
+			if (product is null)
 			{
 				return NotFound("Product was not found.");
 			}
 
 			return Ok(product);
+		}
+
+		[HttpGet("{id}/similar")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status404NotFound)]
+		public async Task<ActionResult<IEnumerable<ProductEntity>>> GetSimilarProductsById(string id, CancellationToken ct)
+		{
+			var product = await _service.GetItemByKeyAsync(id, ct);
+			if (product is null)
+			{
+				return NotFound("Product was not found.");
+			}
+
+			var similarProducts = await _service.FindAsync(x => x.Id != product.Id && x.Category == product.Category, ct);
+
+			return Ok(similarProducts);
 		}
 
 		[HttpPost("email/{id}")]
@@ -65,7 +81,7 @@ namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Controller
 		public async Task<ActionResult<ProductEntity>> AddEmailToProduct(string id, EmailRequestModel model, CancellationToken ct)
 		{
 			var product = await _service.GetItemByKeyAsync(id, ct);
-			if (product == null)
+			if (product is null)
 			{
 				return NotFound("Product was not found.");
 			}
@@ -79,7 +95,7 @@ namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Controller
 		[HttpPost("scrape")]
 		public async Task<ActionResult<ProductEntity>> Scrape(ScrapRequestModel model, CancellationToken ct)
 		{
-			var product = _service.ScrapeProduct(model.Url, ct);
+			var product = await _service.ScrapeProduct(model.Url, ct);
 
 			return Ok(product);
 		}
