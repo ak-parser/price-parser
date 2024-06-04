@@ -7,7 +7,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -55,7 +54,7 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 				var updatedProduct = await _service.ScrapeProduct(currProduct.Url, ct);
 				var emailContent = GenerateEmailBody(updatedProduct, i, NotificationType.WELCOME);
 
-				await SendEmailAsync(emailContent, new() { currProduct.UserEmail }, i);
+				await SendEmailAsync(emailContent, currProduct.UserEmail, i);
 			}
 		}
 
@@ -78,9 +77,9 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 			return new EmailContent { Subject = subject, Body = body };
 		}
 
-		private async Task SendEmailAsync(EmailContent emailContent, List<string> recipients, int emailNumber)
+		private async Task SendEmailAsync(EmailContent emailContent, string recipient, int emailNumber)
 		{
-			if (recipients.Count == 0)
+			if (recipient is null)
 			{
 				_logger.LogWarning($"Email ({emailNumber}) not sent: NO recipients");
 				return;
@@ -95,10 +94,7 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 				HtmlContent = emailContent.Body
 			};
 
-			foreach (var recipient in recipients)
-			{
-				msg.AddTo(new EmailAddress(recipient));
-			}
+			msg.AddTo(new EmailAddress(recipient));
 
 			var response = await client.SendEmailAsync(msg);
 
