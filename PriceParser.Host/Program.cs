@@ -1,8 +1,7 @@
-﻿using Hellang.Middleware.ProblemDetails;
+﻿using System.Reflection;
+using Hellang.Middleware.ProblemDetails;
 using Hellang.Middleware.ProblemDetails.Mvc;
 using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Contracts;
-using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Settings.Models;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
 using Lynkco.Warranty.WebAPI.Host.Common.Config.Dependencies;
 using Lynkco.Warranty.WebAPI.Infrastructure.Common.Middleware;
 using Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Utilities;
@@ -10,8 +9,6 @@ using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Identity.Web;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,43 +45,12 @@ builder.Services.AddProblemDetails(options =>
 	problemDetailsHandler.HandleOptions(options);
 }).AddProblemDetailsConventions();
 
-IConfigProvider<AuthenticationSettings> authSettings = null;
 builder.Services.AddSwaggerGen(options =>
 {
 	options.DescribeAllParametersInCamelCase();
 	var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
 	options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 	options.OperationFilter<AddRequiredHeaderParameter>();
-
-	options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-	{
-		Type = SecuritySchemeType.OAuth2,
-		Flows = new OpenApiOAuthFlows
-		{
-			Implicit = new OpenApiOAuthFlow
-			{
-				AuthorizationUrl = new Uri($"{authSettings.GetData().Instance}{authSettings.GetData().TenantId}/oauth2/v2.0/authorize"),
-				TokenUrl = new Uri($"{authSettings.GetData().Instance}{authSettings.GetData().TenantId}/oauth2/v2.0/token"),
-				Scopes = new Dictionary<string, string>
-				{
-					{ $"api://{authSettings.GetData().ClientId}/{authSettings.GetData().Scope}", "Access to the API" }
-				}
-			}
-		}
-	});
-	options.AddSecurityRequirement(new OpenApiSecurityRequirement
-	{
-		{
-			new OpenApiSecurityScheme
-			{
-				Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oauth2" },
-				Scheme = "oauth2",
-				Name = "oauth2",
-				In = ParameterLocation.Header
-			},
-			new[] { $"api://{authSettings.GetData().ClientId}/{authSettings.GetData().Scope}" }
-		}
-	});
 });
 builder.Services.AddSwaggerGenNewtonsoftSupport();
 
@@ -103,12 +69,10 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	authSettings = app.Services.GetRequiredService<IConfigProvider<AuthenticationSettings>>();
 	app.UseSwagger();
 	app.UseSwaggerUI(options =>
 	{
 		options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-		options.OAuthClientId(authSettings.GetData().ClientId);
 		options.ConfigObject.AdditionalItems["syntaxHighlight"] = new Dictionary<string, object>
 		{
 			["activated"] = false
