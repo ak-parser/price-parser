@@ -1,9 +1,9 @@
-﻿using PriceParser.Application.Common.Config.Dependencies;
+﻿using System.Diagnostics.CodeAnalysis;
+using PriceParser.Application.Common.Config.Dependencies;
 using PriceParser.Data.Common.Config.Dependencies;
 using PriceParser.Host.Product.Config;
 using PriceParser.Host.User.Config;
 using PriceParser.Infrastructure.Common.Config.Dependencies;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.Host.Common.Config.Dependencies
 {
