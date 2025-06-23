@@ -1,9 +1,9 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using System.Linq.Expressions;
+using Microsoft.Azure.Cosmos;
 using PriceParser.Application.Common.Services.Contracts;
 using PriceParser.Domain.Common.Entities.Contracts;
 using PriceParser.Domain.Common.Pagination.Contracts;
 using PriceParser.Domain.Common.Repositories;
-using System.Linq.Expressions;
 
 namespace PriceParser.Application.Common.Services
 {

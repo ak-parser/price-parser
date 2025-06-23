@@ -1,4 +1,4 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Attributes;
+﻿using PriceParser.Domain.Common.Attributes;
 
 namespace PriceParser.Domain.User.Const
 {

@@ -41,9 +41,7 @@ namespace PriceParser.Host.User.Controller
 		/// Get paginatted list of users
 		/// </summary>
 		/// <param name="paginationModel">Pagination parameters</param>
-		/// <param name="filterModel">Filter parameters</param>
-		/// <param name="orderModel">Order parameters</param>
-		/// <param name="cancellationToken">Cancellation token</param>
+		/// <param name="ct">Cancellation token</param>
 		/// <returns>List with users if success, NoContent if there are no users</returns>
 		[HttpGet(Name = "Get users")]
 		[Authorize(Roles = UserRoles.Admin)]
@@ -52,24 +50,21 @@ namespace PriceParser.Host.User.Controller
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 		public async Task<ActionResult<IEnumerable<UserModel>>> GetAll(
 			[FromQuery] PaginationParametersModel paginationModel,
-			CancellationToken cancellationToken)
+			CancellationToken ct)
 		{
 			_logger.LogInformation("Get list of users");
 
-			var itemCount = await _userRepository.GetCount(cancellationToken);
+			var itemCount = await _userRepository.GetCount(ct);
 			if (itemCount == 0)
 			{
 				return NoContent();
 			}
 
-			if (paginationModel == null)
-			{
-				paginationModel = new PaginationParametersModel();
-			}
+			paginationModel ??= new PaginationParametersModel();
 
 			var result = await _userRepository.GetAllAsync(
 				paginationModel,
-				cancellationToken);
+				ct);
 
 			return OkPaged(
 				_mapper.MapCollection(result),
@@ -98,14 +93,14 @@ namespace PriceParser.Host.User.Controller
 		/// Get user model
 		/// </summary>
 		/// <param name="id">User ID</param>
-		/// <param name="token">Token</param>
+		/// <param name="ct">Token</param>
 		/// <returns>User model</returns>
 		[HttpGet("{id}")]
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status403Forbidden)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<ActionResult<UserModel>> Get(string id, CancellationToken token)
+		public async Task<ActionResult<UserModel>> Get(string id, CancellationToken ct)
 		{
 			_logger.LogInformation("Get user by ID");
 
@@ -118,7 +113,7 @@ namespace PriceParser.Host.User.Controller
 				}
 			}
 
-			var user = await _userRepository.GetItemByKeyAsync(id, token);
+			var user = await _userRepository.GetItemByKeyAsync(id, ct);
 			if (user == null)
 			{
 				return NotFound("User was not found.");
@@ -131,7 +126,7 @@ namespace PriceParser.Host.User.Controller
 		/// Set user roles
 		/// </summary>
 		/// <param name="userRoles">Fields to set user roles</param>
-		/// <param name="token">Token</param>
+		/// <param name="ct">Token</param>
 		/// <returns>Ok if user roles was updated or BadRequest if user not exists</returns>
 		[HttpPost]
 		[Authorize(Roles = UserRoles.Admin)]
@@ -140,18 +135,18 @@ namespace PriceParser.Host.User.Controller
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 		public async Task<ActionResult> SetRoles(
 			[FromBody] UserRolesModel userRoles,
-			CancellationToken token)
+			CancellationToken ct)
 		{
 			_logger.LogInformation($"Change user(Id - {userRoles.Id}) roles");
 
-			var user = await _userRepository.GetItemByKeyAsync(userRoles.Id, token);
+			var user = await _userRepository.GetItemByKeyAsync(userRoles.Id, ct);
 			if (user == null)
 			{
 				return BadRequest("User with given ID does not exist.");
 			}
 
 			user.Roles = userRoles.Roles;
-			await _userManagementService.UpdateUserAsync(user, token);
+			await _userManagementService.UpdateUserAsync(user, ct);
 			var model = _mapper.Map(user);
 
 			return Ok(model);

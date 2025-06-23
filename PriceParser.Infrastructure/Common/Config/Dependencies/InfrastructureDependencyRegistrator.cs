@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using PriceParser.Application.Common.Authentication.Settings.Models;
 using PriceParser.Application.Common.Utilities.Contracts;
 using PriceParser.Data.Common.Pagination;
@@ -10,7 +11,6 @@ using PriceParser.Infrastructure.Common.Config.Settings;
 using PriceParser.Infrastructure.Common.RequestPolicies.Config;
 using PriceParser.Infrastructure.Common.Utilities;
 using PriceParser.Infrastructure.Common.Utilities.Contracts;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.Infrastructure.Common.Config.Dependencies
 {

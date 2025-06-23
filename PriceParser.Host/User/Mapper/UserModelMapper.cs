@@ -20,7 +20,7 @@ namespace PriceParser.Host.User.Mapper
 		}
 
 		public override UserModel Map(UserEntity source)
-			=> new UserModel()
+			=> new()
 			{
 				Id = source.Id,
 				Email = source.Email,

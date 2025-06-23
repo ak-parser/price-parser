@@ -28,13 +28,9 @@ namespace PriceParser.Host.Product.Controller
 		[ProducesResponseType(StatusCodes.Status204NoContent)]
 		public async Task<ActionResult<IEnumerable<ProductEntity>>> GetAll([FromQuery] PaginationParametersModel paginationModel, CancellationToken ct)
 		{
-			if (paginationModel is null)
-			{
-				paginationModel = new PaginationParametersModel();
-			}
+			paginationModel ??= new PaginationParametersModel();
 
 			var itemsCount = await _service.GetCount(ct);
-
 			if (itemsCount == 0)
 			{
 				return NoContent();

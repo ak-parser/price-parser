@@ -1,5 +1,5 @@
-﻿using PriceParser.Domain.Product.Entities;
-using System.Linq;
+﻿using System.Linq;
+using PriceParser.Domain.Product.Entities;
 
 namespace PriceParser.ProcessExternalData.Product.Const
 {
@@ -8,9 +8,9 @@ namespace PriceParser.ProcessExternalData.Product.Const
 		public static string GetWelcomePage(ProductEntity product, int productNumber)
 		{
 			var hostUrl = "http://localhost:3000";
-			var shortenedTitle = product.Title.Length > 30 ? $"{product.Title.Substring(0, 30)}..." : product.Title;
-			var shortenedCategory = product.Category.Length > 45 ? $"{product.Category.Substring(0, 45)}..." : product.Category;
-			var shortenedDescription = product.Description.Length > 120 ? $"{product.Description.Substring(0, 120)}..." : product.Description;
+			var shortenedTitle = product.Title.Length > 30 ? $"{product.Title[..30]}..." : product.Title;
+			var shortenedCategory = product.Category.Length > 45 ? $"{product.Category[..45]}..." : product.Category;
+			var shortenedDescription = product.Description.Length > 120 ? $"{product.Description[..120]}..." : product.Description;
 			var currentPrice = product.PriceHistory.Last().Price;
 
 			return $@"<!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">

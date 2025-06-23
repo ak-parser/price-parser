@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using PriceParser.Data.Product.Repository;
 using PriceParser.Domain.Common.Repositories;
 using PriceParser.Domain.Product.Entities;
 using PriceParser.Domain.Product.Repositories.Contracts;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.Data.Product.Config
 {

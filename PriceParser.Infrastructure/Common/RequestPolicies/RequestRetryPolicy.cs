@@ -9,7 +9,7 @@ namespace PriceParser.Infrastructure.Common.RequestPolicies
 	{
 		private const int RetryCount = 7;
 		private const int RetryPause = 2;
-		private readonly List<HttpStatusCode> _retryCodes = new List<HttpStatusCode>()
+		private readonly List<HttpStatusCode> _retryCodes = new()
 		{
 			HttpStatusCode.RequestTimeout,
 			HttpStatusCode.BadGateway,

@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Infrastructure.Common.Pagination;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PriceParser.Domain.Common.Pagination.Contracts;
+using PriceParser.Infrastructure.Common.Pagination;
 
 namespace PriceParser.Infrastructure.Common.Controllers
 {

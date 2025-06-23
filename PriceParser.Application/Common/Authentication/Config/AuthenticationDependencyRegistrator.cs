@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
-using PriceParser.Application.Common.Authentication;
 using PriceParser.Application.Common.Authentication.Contracts;
 
 namespace PriceParser.Application.Common.Authentication.Config

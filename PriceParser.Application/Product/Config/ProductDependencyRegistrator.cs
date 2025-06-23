@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using PriceParser.Application.Common.Mapper.Contracts;
 using PriceParser.Application.Common.Services.Contracts;
 using PriceParser.Application.Product.Mappers;
@@ -6,7 +7,6 @@ using PriceParser.Application.Product.Models;
 using PriceParser.Application.Product.Service;
 using PriceParser.Application.Product.Service.Contracts;
 using PriceParser.Domain.Product.Entities;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.Application.Product.Config
 {

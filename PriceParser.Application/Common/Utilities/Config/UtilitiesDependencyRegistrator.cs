@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using PriceParser.Application.Common.Utilities;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using PriceParser.Data.Common.Utilities.Contracts;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.Application.Common.Utilities.Config
 {

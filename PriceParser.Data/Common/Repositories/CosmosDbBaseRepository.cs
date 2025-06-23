@@ -1,15 +1,15 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Exceptions;
+﻿using System.Linq.Expressions;
+using System.Net;
+using System.Reflection;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using PriceParser.Data.Common.Exceptions;
 using PriceParser.Data.Common.Repositories.Const;
 using PriceParser.Data.Common.Utilities.Contracts;
 using PriceParser.Domain.Common.Entities;
 using PriceParser.Domain.Common.Entities.Contracts;
 using PriceParser.Domain.Common.Pagination.Contracts;
 using PriceParser.Domain.Common.Repositories;
-using System.Linq.Expressions;
-using System.Net;
-using System.Reflection;
 
 namespace PriceParser.Data.Common.Repositories
 {
@@ -295,10 +295,7 @@ namespace PriceParser.Data.Common.Repositories
 
 		protected async Task<Container> GetContainer()
 		{
-			if (_container is null)
-			{
-				_container = await _factory.GetContainer(ContainerName);
-			}
+			_container ??= await _factory.GetContainer(ContainerName);
 
 			return _container;
 		}

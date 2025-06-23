@@ -13,7 +13,7 @@ using PriceParser.ProcessExternalData.Product.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Function
+namespace PriceParser.ProcessExternalData.Product.EventGridTrigger.Function
 {
 	public class UpdateProductPrices
 	{
@@ -62,9 +62,9 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 
 		private EmailContent GenerateEmailBody(ProductEntity product, int productNumber, NotificationType type)
 		{
-			string shortenedTitle = product.Title.Length > 20 ? $"{product.Title.Substring(0, 20)}..." : product.Title;
-			string subject = string.Empty;
-			string body = string.Empty;
+			var shortenedTitle = product.Title.Length > 20 ? $"{product.Title[..20]}..." : product.Title;
+			var subject = string.Empty;
+			var body = string.Empty;
 
 			switch (type)
 			{

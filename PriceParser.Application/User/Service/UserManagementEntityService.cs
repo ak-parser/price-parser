@@ -7,7 +7,6 @@ namespace PriceParser.Application.User.Service
 {
 	public class UserManagementEntityService : BaseInternalEntityService<UserEntity>, IUserManagementEntityService
 	{
-
 		public UserManagementEntityService(
 			IUserRepository repository) : base(repository)
 		{
@@ -15,12 +14,12 @@ namespace PriceParser.Application.User.Service
 
 		public async Task<UserEntity> CreateUserAsync(UserEntity user, CancellationToken ct)
 		{
-			return await base.CreateAsync(user, ct);
+			return await CreateAsync(user, ct);
 		}
 
 		public async Task<UserEntity> UpdateUserAsync(UserEntity user, CancellationToken ct)
 		{
-			return await base.UpdateAsync(user, ct);
+			return await UpdateAsync(user, ct);
 		}
 	}
 }

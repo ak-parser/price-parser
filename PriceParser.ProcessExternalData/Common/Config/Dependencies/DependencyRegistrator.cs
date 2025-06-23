@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection;
 using PriceParser.Application.Common.Config.Dependencies;
 using PriceParser.Data.Common.Config.Dependencies;
 using PriceParser.Infrastructure.Common.Config.Dependencies;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PriceParser.ProcessExternalData.Common.Config.Dependencies
 {

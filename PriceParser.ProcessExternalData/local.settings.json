@@ -1,5 +1,5 @@
 ﻿{
-    "IsEncrypted": false,
+  "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "AzureWebJobsSecretStorageType": "files",
@@ -14,7 +14,7 @@
     "CosmosDb__MaxRetryWaitTimeOnRateLimitedRequests": "60",
 
     // Azure Event Grid
-    "EventGrid__Topics__VehicleWarranty__Endpoint": "https://lnc-warranty-vehiclewarranty-dev.northeurope-1.eventgrid.azure.net/api/events",
+    "EventGrid__Topics__VehicleWarranty__Endpoint": "",
     "EventGrid__Topics__VehicleWarranty__AccessKey": ""
   }
 }
