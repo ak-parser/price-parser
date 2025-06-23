@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Utilities
+namespace PriceParser.Data.Common.Utilities
 {
 	public class PatchUpdatePathProvider<T>
 	{

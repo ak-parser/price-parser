@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Data.User.Models;
+﻿using PriceParser.Data.User.Models;
 
-namespace Lynkco.Warranty.WebAPI.Data.User.Utility.Contracts
+namespace PriceParser.Data.User.Utility.Contracts
 {
 	public interface IUserManager
 	{

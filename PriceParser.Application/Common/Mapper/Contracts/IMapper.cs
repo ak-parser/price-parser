@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts
+﻿namespace PriceParser.Application.Common.Mapper.Contracts
 {
 	public interface IMapper<TSource, TDestination>
 	{

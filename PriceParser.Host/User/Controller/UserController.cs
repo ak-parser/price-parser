@@ -1,16 +1,16 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts;
-using Lynkco.Warranty.WebAPI.Application.User.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Pagination;
-using Lynkco.Warranty.WebAPI.Data.User.Utility.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Const;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Domain.User.Repository.Contracts;
-using Lynkco.Warranty.WebAPI.Host.User.Models;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Controllers;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PriceParser.Application.Common.Mapper.Contracts;
+using PriceParser.Application.User.Service.Contracts;
+using PriceParser.Data.Common.Pagination;
+using PriceParser.Data.User.Utility.Contracts;
+using PriceParser.Domain.User.Const;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Domain.User.Repository.Contracts;
+using PriceParser.Host.User.Models;
+using PriceParser.Infrastructure.Common.Controllers;
 
-namespace Lynkco.Warranty.WebAPI.Host.User.Controller
+namespace PriceParser.Host.User.Controller
 {
 	[ApiController]
 	[Authorize]

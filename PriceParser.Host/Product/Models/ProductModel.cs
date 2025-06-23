@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Models
+namespace PriceParser.Host.Product.Models
 {
 	public class ProductModel
 	{

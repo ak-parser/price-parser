@@ -1,12 +1,12 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts;
-using Lynkco.Warranty.WebAPI.Application.Common.Services;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Models;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Repositories.Contracts;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using PriceParser.Application.Common.Mapper.Contracts;
+using PriceParser.Application.Common.Services;
+using PriceParser.Application.Product.Models;
+using PriceParser.Application.Product.Service.Contracts;
+using PriceParser.Domain.Product.Entities;
+using PriceParser.Domain.Product.Repositories.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service
+namespace PriceParser.Application.Product.Service
 {
 	public class ProductEntityService : BaseInternalEntityService<ProductEntity>, IProductEntityService
 	{
@@ -37,7 +37,7 @@ namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service
 		{
 			var data = await _zenService.ScrapeAsync(url);
 
-			AmazonProductModel amazonProduct = JsonConvert.DeserializeObject<AmazonProductModel>(data);
+			var amazonProduct = JsonConvert.DeserializeObject<AmazonProductModel>(data);
 			var product = _mapper.Map(amazonProduct);
 
 			return product;

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Domain.User.Entity.Parts
+﻿namespace PriceParser.Domain.User.Entity.Parts
 {
 	public class Customizations
 	{

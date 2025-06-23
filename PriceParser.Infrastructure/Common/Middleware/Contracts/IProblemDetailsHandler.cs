@@ -1,6 +1,6 @@
 ﻿using Hellang.Middleware.ProblemDetails;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Middleware.Contracts
+namespace PriceParser.Infrastructure.Common.Middleware.Contracts
 {
 	public interface IProblemDetailsHandler
 	{

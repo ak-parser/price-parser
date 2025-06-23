@@ -1,10 +1,10 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper;
-using Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Models;
+﻿using PriceParser.Application.Common.Mapper;
+using PriceParser.Application.Common.Utilities.Contracts;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.Product.Entities;
+using PriceParser.Host.Product.Models;
 
-namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Mapper
+namespace PriceParser.Host.Product.Mapper
 {
 	public class ProductModelMapper : MapperBase<ProductEntity, ProductModel>
 	{

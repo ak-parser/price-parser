@@ -1,16 +1,17 @@
-﻿using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.Const;
+﻿using System.Linq;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using PriceParser.Application.Product.Service.Contracts;
+using PriceParser.Domain.Product.Entities;
+using PriceParser.ProcessExternalData.Product.Const;
+using PriceParser.ProcessExternalData.Product.Models;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Function
 {
@@ -25,8 +26,8 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 			_logger = logger;
 		}
 
-		[FunctionName("UpdateProductPricesHttp")]
-		public async Task<IActionResult> RunHttp(
+		[FunctionName(nameof(UpdateProductPricesHttp))]
+		public async Task<IActionResult> UpdateProductPricesHttp(
 			[HttpTrigger("post", Route = null)] HttpRequest req,
 			ILogger log,
 			CancellationToken ct)
@@ -35,8 +36,9 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 			return new OkResult();
 		}
 
-		[FunctionName("UpdateProductPricesTimer")]
-		public async Task Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+		[FunctionName(nameof(UpdateProductPricesTimer))]
+		public async Task UpdateProductPricesTimer(
+			[TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
 			ILogger log,
 			CancellationToken ct)
 		{
@@ -70,8 +72,9 @@ namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.EventGridTrigger.Fu
 					subject = $"Welcome to PriceParser for {shortenedTitle}";
 					body = ProductEmailMessages.GetWelcomePage(product, productNumber);
 					break;
-
+				default:
 					// Add other cases for CHANGE_OF_STOCK, LOWEST_PRICE, THRESHOLD_MET
+					break;
 			}
 
 			return new EmailContent { Subject = subject, Body = body };

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts
+﻿namespace PriceParser.Domain.Common.Entities.Contracts
 {
 	public interface IEntity
 	{

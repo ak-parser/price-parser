@@ -1,17 +1,17 @@
 ﻿using Lynkco.Warranty.WebAPI.Data.Common.Exceptions;
-using Lynkco.Warranty.WebAPI.Data.Common.Repositories.Const;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Entities;
-using Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
+using PriceParser.Data.Common.Repositories.Const;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.Common.Entities;
+using PriceParser.Domain.Common.Entities.Contracts;
+using PriceParser.Domain.Common.Pagination.Contracts;
+using PriceParser.Domain.Common.Repositories;
 using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Repositories
+namespace PriceParser.Data.Common.Repositories
 {
 	public abstract class CosmosDbBaseRepository<TEntity> : IBaseRepository<TEntity>
 		where TEntity : IEntity

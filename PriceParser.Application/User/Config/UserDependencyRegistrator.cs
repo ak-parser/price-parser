@@ -1,15 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Application.Comparers;
-using Lynkco.Warranty.WebAPI.Application.Comparers.Contracts;
-using Lynkco.Warranty.WebAPI.Application.User.Service;
-using Lynkco.Warranty.WebAPI.Application.User.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Data.User.Utility;
-using Lynkco.Warranty.WebAPI.Data.User.Utility.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
 using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Application.Comparers;
+using PriceParser.Application.Comparers.Contracts;
+using PriceParser.Application.User.Service;
+using PriceParser.Application.User.Service.Contracts;
+using PriceParser.Data.User.Utility;
+using PriceParser.Data.User.Utility.Contracts;
+using PriceParser.Domain.User.Entity;
 
-namespace Lynkco.Warranty.WebAPI.Application.User.Config
+namespace PriceParser.Application.User.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class UserDependencyRegistrator

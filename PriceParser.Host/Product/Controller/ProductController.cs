@@ -1,11 +1,11 @@
-﻿using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Pagination;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Models;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Controllers;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PriceParser.Application.Product.Service.Contracts;
+using PriceParser.Data.Common.Pagination;
+using PriceParser.Domain.Product.Entities;
+using PriceParser.Host.Product.Models;
+using PriceParser.Infrastructure.Common.Controllers;
 
-namespace Lynkco.Warranty.WebAPI.Host.VehicleWarranty.Controller
+namespace PriceParser.Host.Product.Controller
 {
 	[ApiController]
 	// [Authorize]

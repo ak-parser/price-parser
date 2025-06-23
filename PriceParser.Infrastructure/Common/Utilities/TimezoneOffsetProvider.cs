@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using PriceParser.Application.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities
+namespace PriceParser.Infrastructure.Common.Utilities
 {
 	public class TimezoneOffsetProvider : ITimezoneOffsetProvider
 	{

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts
+﻿namespace PriceParser.Infrastructure.Common.Utilities.Contracts
 {
 	public interface ICosmosDbContainersHandler
 	{

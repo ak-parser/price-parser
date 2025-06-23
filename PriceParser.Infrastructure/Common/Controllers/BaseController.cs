@@ -1,8 +1,8 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Pagination;
+﻿using Lynkco.Warranty.WebAPI.Infrastructure.Common.Pagination;
 using Microsoft.AspNetCore.Mvc;
+using PriceParser.Domain.Common.Pagination.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Controllers
+namespace PriceParser.Infrastructure.Common.Controllers
 {
 	[ApiController]
 	public abstract class BaseController : ControllerBase

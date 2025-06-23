@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Models
+﻿namespace PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Models
 {
 	public class AzureEventGridTopicSettings
 	{

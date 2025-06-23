@@ -1,8 +1,8 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Repositories;
+﻿using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Domain.Common.Entities.Contracts;
+using PriceParser.Domain.Common.Repositories;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Services
+namespace PriceParser.Application.Common.Services
 {
 	public abstract class BaseInternalEntityService<TEntity>
 		: BaseEntityService<TEntity, string>, IBaseInternalEntityService<TEntity>

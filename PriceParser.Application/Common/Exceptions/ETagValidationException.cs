@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Exceptions
+﻿namespace PriceParser.Application.Common.Exceptions
 {
 	public class ETagValidationException : Exception
 	{

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Models.Contracts
+﻿namespace PriceParser.Application.Common.Models.Contracts
 {
 	public interface IEntityServiceRequestModel
 	{

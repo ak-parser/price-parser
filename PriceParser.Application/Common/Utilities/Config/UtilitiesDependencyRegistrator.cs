@@ -1,8 +1,9 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.Utilities;
+using PriceParser.Data.Common.Utilities.Contracts;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Utilities.Config
+namespace PriceParser.Application.Common.Utilities.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class UtilitiesDependencyRegistrator

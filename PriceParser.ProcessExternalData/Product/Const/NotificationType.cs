@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.Const
+﻿namespace PriceParser.ProcessExternalData.Product.Const
 {
 	public enum NotificationType
 	{

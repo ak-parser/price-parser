@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
+﻿using PriceParser.Domain.Product.Entities;
 using System.Linq;
 
-namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Vehicle.Const
+namespace PriceParser.ProcessExternalData.Product.Const
 {
 	public static class ProductEmailMessages
 	{

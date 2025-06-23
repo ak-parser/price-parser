@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.Extensions.Configuration;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings
+namespace PriceParser.Infrastructure.Common.Config.Settings
 {
 	public class BaseAppSettingsProvider
 	{

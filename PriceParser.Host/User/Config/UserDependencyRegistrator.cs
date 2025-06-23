@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Host.User.Mapper;
-using Lynkco.Warranty.WebAPI.Host.User.Models;
+using PriceParser.Application.Common.Mapper.Contracts;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Host.User.Mapper;
+using PriceParser.Host.User.Models;
 
-namespace Lynkco.Warranty.WebAPI.Host.User.Config
+namespace PriceParser.Host.User.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class UserDependencyRegistrator

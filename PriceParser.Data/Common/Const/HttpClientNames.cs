@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Data.Common.Const
+﻿namespace PriceParser.Data.Common.Const
 {
 	public static class HttpClientNames
 	{

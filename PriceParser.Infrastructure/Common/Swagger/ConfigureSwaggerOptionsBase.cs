@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger
+namespace PriceParser.Infrastructure.Common.Swagger
 {
 	[ExcludeFromCodeCoverage]
 	public abstract class ConfigureSwaggerOptionsBase

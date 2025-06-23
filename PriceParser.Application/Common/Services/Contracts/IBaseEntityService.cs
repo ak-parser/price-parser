@@ -1,9 +1,9 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
+using PriceParser.Domain.Common.Entities.Contracts;
+using PriceParser.Domain.Common.Pagination.Contracts;
 using System.Linq.Expressions;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts
+namespace PriceParser.Application.Common.Services.Contracts
 {
 	public interface IBaseEntityService<TEntity, TRequestModel> where TEntity : IEntity
 	{

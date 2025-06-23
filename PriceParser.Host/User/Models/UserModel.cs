@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.User.Const;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using PriceParser.Domain.User.Const;
 
-namespace Lynkco.Warranty.WebAPI.Host.User.Models
+namespace PriceParser.Host.User.Models
 {
 	public class UserModel
 	{

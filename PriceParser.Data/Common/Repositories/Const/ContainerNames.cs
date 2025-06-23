@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Data.Common.Repositories.Const
+﻿namespace PriceParser.Data.Common.Repositories.Const
 {
 	public static class ContainerNames
 	{

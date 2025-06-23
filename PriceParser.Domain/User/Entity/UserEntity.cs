@@ -1,8 +1,8 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Entities;
-using Lynkco.Warranty.WebAPI.Domain.User.Const;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity.Parts;
+﻿using PriceParser.Domain.Common.Entities;
+using PriceParser.Domain.User.Const;
+using PriceParser.Domain.User.Entity.Parts;
 
-namespace Lynkco.Warranty.WebAPI.Domain.User.Entity
+namespace PriceParser.Domain.User.Entity
 {
 	public class UserEntity : BaseEntity
 	{

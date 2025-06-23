@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
 using Microsoft.Azure.Cosmos;
+using PriceParser.Data.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Utilities
+namespace PriceParser.Data.Common.Utilities
 {
 	[ExcludeFromCodeCoverage]
 	public class CosmosDbContainerFactory : ICosmosDbContainerFactory

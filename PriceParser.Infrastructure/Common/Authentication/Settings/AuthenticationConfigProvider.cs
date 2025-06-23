@@ -1,9 +1,9 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Settings.Models;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using PriceParser.Application.Common.Authentication.Settings.Models;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Infrastructure.Common.Config.Settings;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Authentication.Settings
+namespace PriceParser.Infrastructure.Common.Authentication.Settings
 {
 	public class AuthenticationConfigProvider : BaseAppSettingsProvider, IConfigProvider<AuthenticationSettings>
 	{

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Authentication.Settings.Models
+﻿namespace PriceParser.Application.Common.Authentication.Settings.Models
 {
 	public class AuthenticationSettings
 	{

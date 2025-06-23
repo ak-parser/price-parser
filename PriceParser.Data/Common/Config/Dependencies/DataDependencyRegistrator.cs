@@ -1,11 +1,11 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Utilities;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Data.User.Config;
-using Lynkco.Warranty.WebAPI.Data.VehicleWarranty.Config;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Data.Common.Utilities;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Data.Product.Config;
+using PriceParser.Data.User.Config;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Config.Dependencies
+namespace PriceParser.Data.Common.Config.Dependencies
 {
 	[ExcludeFromCodeCoverage]
 	public static class DataDependencyRegistrator

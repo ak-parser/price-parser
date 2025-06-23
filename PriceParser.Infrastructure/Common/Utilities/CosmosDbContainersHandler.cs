@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using Lynkco.Warranty.WebAPI.Data.Common.Repositories.Const;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts;
+using PriceParser.Data.Common.Repositories.Const;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Infrastructure.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities
+namespace PriceParser.Infrastructure.Common.Utilities
 {
 	public class CosmosDbContainersHandler : ICosmosDbContainersHandler
 	{

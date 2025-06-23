@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Attributes;
 using Microsoft.OpenApi.Models;
+using PriceParser.Infrastructure.Common.Swagger.Attributes;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Utilities
+namespace PriceParser.Infrastructure.Common.Swagger.Utilities
 {
 	[ExcludeFromCodeCoverage]
 	public class AddSwaggerRequiredSchemaFilter : ISchemaFilter

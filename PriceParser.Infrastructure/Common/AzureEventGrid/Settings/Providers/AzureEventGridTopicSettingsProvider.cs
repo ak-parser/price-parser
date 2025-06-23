@@ -1,9 +1,9 @@
-﻿using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Models;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Models;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
+using PriceParser.Infrastructure.Common.Config.Settings;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Providers
+namespace PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Providers
 {
 	public class AzureEventGridTopicSettingsProvider : BaseAppSettingsProvider,
 		IEventGridTopicSettingsProvider

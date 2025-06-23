@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Domain.Common.Attributes
+﻿namespace PriceParser.Domain.Common.Attributes
 {
 	public class NotificationFieldNameAttribute : Attribute
 	{

@@ -1,10 +1,10 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Repositories;
-using Lynkco.Warranty.WebAPI.Data.Common.Repositories.Const;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Domain.User.Repository.Contracts;
+﻿using PriceParser.Data.Common.Repositories;
+using PriceParser.Data.Common.Repositories.Const;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Domain.User.Repository.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Data.User.Repository
+namespace PriceParser.Data.User.Repository
 {
 	public class CosmosDbUserRepository : CosmosDbBaseRepository<UserEntity>,
 		IUserRepository

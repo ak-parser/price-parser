@@ -1,10 +1,10 @@
-﻿using Lynkco.Warranty.WebAPI.ProcessExternalData;
-using Lynkco.Warranty.WebAPI.ProcessExternalData.Common.Config.Dependencies;
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
+using PriceParser.ProcessExternalData;
+using PriceParser.ProcessExternalData.Common.Config.Dependencies;
 
 [assembly: FunctionsStartup(typeof(Startup))]
-namespace Lynkco.Warranty.WebAPI.ProcessExternalData
+namespace PriceParser.ProcessExternalData
 {
 	internal class Startup : FunctionsStartup
 	{

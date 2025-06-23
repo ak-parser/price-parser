@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Azure;
 using Azure.Messaging.EventGrid;
-using Lynkco.Warranty.WebAPI.Application.Common.AzureEventGrid.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Utility;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
+using PriceParser.Application.Common.AzureEventGrid.Service.Contracts;
+using PriceParser.Domain.Common.Utility;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Service
+namespace PriceParser.Infrastructure.Common.AzureEventGrid.Service
 {
 	[ExcludeFromCodeCoverage]
 	public class AzureEventGridService : IEventGridService

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Comparers.Contracts
+﻿namespace PriceParser.Application.Comparers.Contracts
 {
 	public interface IEqualityChecker<T>
 	{

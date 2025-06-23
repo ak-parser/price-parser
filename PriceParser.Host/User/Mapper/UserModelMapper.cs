@@ -1,10 +1,10 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper;
-using Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Host.User.Models;
+﻿using PriceParser.Application.Common.Mapper;
+using PriceParser.Application.Common.Utilities.Contracts;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Host.User.Models;
 
-namespace Lynkco.Warranty.WebAPI.Host.User.Mapper
+namespace PriceParser.Host.User.Mapper
 {
 	public class UserModelMapper : MapperBase<UserEntity, UserModel>
 	{

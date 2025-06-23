@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Pagination
+namespace PriceParser.Infrastructure.Common.Pagination
 {
 	public class PaginationMetadata
 	{

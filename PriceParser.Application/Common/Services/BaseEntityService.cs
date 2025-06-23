@@ -1,11 +1,11 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Repositories;
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
+using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Domain.Common.Entities.Contracts;
+using PriceParser.Domain.Common.Pagination.Contracts;
+using PriceParser.Domain.Common.Repositories;
 using System.Linq.Expressions;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Services
+namespace PriceParser.Application.Common.Services
 {
 	public abstract class BaseEntityService<TEntity, TRequestModel> : IBaseEntityService<TEntity, TRequestModel>
 		where TEntity : IEntity

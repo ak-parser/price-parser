@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities
+﻿namespace PriceParser.Domain.Product.Entities
 {
 	public class PriceHistory
 	{

@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
+﻿using PriceParser.Data.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Utilities
+namespace PriceParser.Application.Common.Utilities
 {
 	public class EpochHelper : IEpochHelper
 	{

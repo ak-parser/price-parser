@@ -1,11 +1,11 @@
-﻿using Lynkco.Warranty.WebAPI.Data.User.Repository;
-using Lynkco.Warranty.WebAPI.Domain.Common.Repositories;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Domain.User.Repository.Contracts;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Data.User.Repository;
+using PriceParser.Domain.Common.Repositories;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Domain.User.Repository.Contracts;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Data.User.Config
+namespace PriceParser.Data.User.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class UserDependencyRegistrator

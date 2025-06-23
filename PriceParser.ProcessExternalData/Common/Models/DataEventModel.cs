@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Common.Models
+namespace PriceParser.ProcessExternalData.Common.Models
 {
 	public record DataEventModel<T>
 	{

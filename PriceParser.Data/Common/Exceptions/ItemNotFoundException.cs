@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Exceptions
+namespace PriceParser.Data.Common.Exceptions
 {
 	[ExcludeFromCodeCoverage]
 	public class ItemNotFoundException : Exception

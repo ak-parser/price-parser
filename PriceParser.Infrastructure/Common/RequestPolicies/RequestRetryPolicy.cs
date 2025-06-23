@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using Polly;
 using Polly.Retry;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.RequestPolicies
+namespace PriceParser.Infrastructure.Common.RequestPolicies
 {
 	public class RequestRetryPolicy
 	{

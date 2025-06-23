@@ -1,14 +1,14 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts;
-using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Mappers;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Models;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.Mapper.Contracts;
+using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Application.Product.Mappers;
+using PriceParser.Application.Product.Models;
+using PriceParser.Application.Product.Service;
+using PriceParser.Application.Product.Service.Contracts;
+using PriceParser.Domain.Product.Entities;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Config
+namespace PriceParser.Application.Product.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class ProductDependencyRegistrator

@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace Lynkco.Warranty.WebAPI.Domain.Common.Utility
+namespace PriceParser.Domain.Common.Utility
 {
 	public static class UriExtensions
 	{

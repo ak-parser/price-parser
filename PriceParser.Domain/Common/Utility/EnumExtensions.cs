@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
-using Lynkco.Warranty.WebAPI.Domain.Common.Attributes;
+using PriceParser.Domain.Common.Attributes;
 
-namespace Lynkco.Warranty.WebAPI.Domain.Common.Utility
+namespace PriceParser.Domain.Common.Utility
 {
 	public static class EnumExtensions
 	{

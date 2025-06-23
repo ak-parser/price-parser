@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Authentication.Contracts
+namespace PriceParser.Application.Common.Authentication.Contracts
 {
 	public interface IUserAuthenticationHandler
 	{

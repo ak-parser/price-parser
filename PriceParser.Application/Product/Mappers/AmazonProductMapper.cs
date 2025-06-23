@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
-using Lynkco.Warranty.WebAPI.Application.Common.Mapper;
-using Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Models;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
+using PriceParser.Application.Common.Mapper;
+using PriceParser.Application.Product.Models;
+using PriceParser.Domain.Product.Entities;
 
-namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Mappers
+namespace PriceParser.Application.Product.Mappers
 {
 	public class AmazonProductMapper : MapperBase<AmazonProductModel, ProductEntity>
 	{

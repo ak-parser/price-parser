@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.Authentication;
+using PriceParser.Application.Common.Authentication.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Authentication.Config
+namespace PriceParser.Application.Common.Authentication.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class AuthenticationDependencyRegistrator

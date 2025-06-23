@@ -1,18 +1,18 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Settings.Models;
-using Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Pagination;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Authentication.Settings;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Config;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.RequestPolicies.Config;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.Authentication.Settings.Models;
+using PriceParser.Application.Common.Utilities.Contracts;
+using PriceParser.Data.Common.Pagination;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.Common.Pagination.Contracts;
+using PriceParser.Infrastructure.Common.Authentication.Settings;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Config;
+using PriceParser.Infrastructure.Common.Config.Settings;
+using PriceParser.Infrastructure.Common.RequestPolicies.Config;
+using PriceParser.Infrastructure.Common.Utilities;
+using PriceParser.Infrastructure.Common.Utilities.Contracts;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Dependencies
+namespace PriceParser.Infrastructure.Common.Config.Dependencies
 {
 	[ExcludeFromCodeCoverage]
 	public static class InfrastructureDependencyRegistrator

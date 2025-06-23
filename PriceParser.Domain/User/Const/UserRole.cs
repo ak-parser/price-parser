@@ -1,6 +1,6 @@
 ﻿using Lynkco.Warranty.WebAPI.Domain.Common.Attributes;
 
-namespace Lynkco.Warranty.WebAPI.Domain.User.Const
+namespace PriceParser.Domain.User.Const
 {
 	public enum UserRole
 	{

@@ -6,42 +6,66 @@
 trigger: none
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: "windows-latest"
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  solution: "**/*.sln"
+  buildPlatform: "Any CPU"
+  buildConfiguration: "Release"
 
 steps:
-- task: NuGetToolInstaller@1
-- task: NuGetCommand@2
-  displayName: "Restore packages"
-  inputs:
-    restoreSolution: '$(solution)'
+  - task: NuGetToolInstaller@1
+  - task: NuGetCommand@2
+    displayName: "Restore packages"
+    inputs:
+      restoreSolution: "$(solution)"
 
-- task: DotNetCoreCLI@2
-  displayName: "Build the solution"
-  inputs:
-    command: "build"
-    arguments: "--configuration $(buildConfiguration)"
-    
-- task: DotNetCoreCLI@2
-  displayName: "Run tests and collect code coverage"
-  inputs:
-    command: test
-    projects: '**/*Test/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+  - task: SonarCloudPrepare@2
+    displayName: "Prepare analysis on SonarCloud"
+    inputs:
+      SonarCloud: 'SonarCloud-Lynk'
+      organization: 'reaktor-lynkco'
+      scannerMode: 'MSBuild'
+      projectKey: 'Reaktor-LynkCo_Lynkco.Warranty.WebAPI'
+      projectName: 'Lynkco.Warranty.WebAPI'
+      extraProperties: |
+        # Additional properties that will be passed to the scanner, 
+        # Put one key=value per line, example:
+        # sonar.exclusions=**/coverlet/**
+        sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
 
-- task: reportgenerator@5
-  displayName: Create reports
-  inputs:
-    reports: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
-    targetdir: '$(Build.SourcesDirectory)/coverlet/reports'
+  - task: DotNetCoreCLI@2
+    displayName: "Build the solution"
+    inputs:
+      command: "build"
+      arguments: "--configuration $(buildConfiguration)"
 
-- task: PublishCodeCoverageResults@1
-  displayName: "Publish code coverage results"
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml'
-    failIfCoverageEmpty: true
+  - task: DotNetCoreCLI@2
+    displayName: "Run tests and collect code coverage"
+    inputs:
+      command: test
+      projects: "**/*Test/*.csproj"
+      arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover'
+
+  - task: SonarCloudAnalyze@2
+    displayName: "Run Code Analysis"
+    inputs:
+      jdkversion: 'JAVA_HOME_17_X64'
+
+  - task: SonarCloudPublish@2
+    displayName: "Publish Quality Gate Result"
+    inputs:
+      pollingTimeoutSec: '300'
+
+  - task: reportgenerator@5
+    displayName: Create reports
+    inputs:
+      reports: "$(Agent.TempDirectory)/**/coverage.opencover.xml"
+      targetdir: "$(Build.SourcesDirectory)/coverlet/reports"
+
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish code coverage results"
+    inputs:
+      codeCoverageTool: "Cobertura"
+      summaryFileLocation: "$(Build.SourcesDirectory)/coverlet/reports/Cobertura.xml"
+      failIfCoverageEmpty: true

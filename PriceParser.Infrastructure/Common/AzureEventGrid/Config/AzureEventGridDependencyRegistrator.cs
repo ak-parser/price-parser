@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Lynkco.Warranty.WebAPI.Application.Common.AzureEventGrid.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Service;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Providers;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Application.Common.AzureEventGrid.Service.Contracts;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Service;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Providers;
+using PriceParser.Infrastructure.Common.AzureEventGrid.Settings.Providers.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.AzureEventGrid.Config
+namespace PriceParser.Infrastructure.Common.AzureEventGrid.Config
 {
 	[ExcludeFromCodeCoverage]
 	public static class AzureEventGridDependencyRegistrator

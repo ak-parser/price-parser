@@ -1,12 +1,12 @@
 ﻿using Hellang.Middleware.ProblemDetails;
-using Lynkco.Warranty.WebAPI.Application.Common.Exceptions;
-using Lynkco.Warranty.WebAPI.Data.Common.Exceptions;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Middleware.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Cosmos;
 using NPOI.OpenXml4Net.Exceptions;
+using PriceParser.Application.Common.Exceptions;
+using PriceParser.Data.Common.Exceptions;
+using PriceParser.Infrastructure.Common.Middleware.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Middleware
+namespace PriceParser.Infrastructure.Common.Middleware
 {
 	public class ProblemDetailsHandler : IProblemDetailsHandler
 	{

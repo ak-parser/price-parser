@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.User.Const;
+﻿using PriceParser.Domain.User.Const;
 
-namespace Lynkco.Warranty.WebAPI.Data.User.Models
+namespace PriceParser.Data.User.Models
 {
 	public class UserModel
 	{

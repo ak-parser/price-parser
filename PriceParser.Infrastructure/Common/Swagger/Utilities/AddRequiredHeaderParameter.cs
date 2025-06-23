@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Utilities
+namespace PriceParser.Infrastructure.Common.Swagger.Utilities
 {
 	[ExcludeFromCodeCoverage]
 	public class AddRequiredHeaderParameter : IOperationFilter

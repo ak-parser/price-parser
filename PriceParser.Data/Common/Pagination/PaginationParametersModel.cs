@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using PriceParser.Domain.Common.Pagination.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Pagination
+namespace PriceParser.Data.Common.Pagination
 {
 	public class PaginationParametersModel : IPaginationParameters
 	{

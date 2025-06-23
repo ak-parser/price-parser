@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Utilities
+﻿namespace PriceParser.Application.Common.Utilities
 {
 	public class PercentCalculator
 	{

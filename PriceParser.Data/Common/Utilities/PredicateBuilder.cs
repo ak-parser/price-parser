@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
+using PriceParser.Data.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Data.Common.Utilities
+namespace PriceParser.Data.Common.Utilities
 {
 	public class PredicateBuilder : IPredicateBuilder
 	{

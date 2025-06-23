@@ -1,11 +1,11 @@
 ﻿using System.Security.Claims;
-using Lynkco.Warranty.WebAPI.Data.Common.Const;
-using Lynkco.Warranty.WebAPI.Data.User.Models;
-using Lynkco.Warranty.WebAPI.Data.User.Utility.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Const;
 using Microsoft.AspNetCore.Http;
+using PriceParser.Data.Common.Const;
+using PriceParser.Data.User.Models;
+using PriceParser.Data.User.Utility.Contracts;
+using PriceParser.Domain.User.Const;
 
-namespace Lynkco.Warranty.WebAPI.Data.User.Utility
+namespace PriceParser.Data.User.Utility
 {
 	public class UserManager : IUserManager
 	{

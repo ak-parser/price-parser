@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts
+﻿namespace PriceParser.Data.Common.Utilities.Contracts
 {
 	public interface IVdnParser
 	{

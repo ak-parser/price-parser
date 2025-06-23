@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Repositories;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
+﻿using PriceParser.Domain.Common.Repositories;
+using PriceParser.Domain.User.Entity;
 
-namespace Lynkco.Warranty.WebAPI.Domain.User.Repository.Contracts
+namespace PriceParser.Domain.User.Repository.Contracts
 {
 	public interface IUserRepository : IBaseRepository<UserEntity>
 	{

@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities;
+﻿using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Domain.Product.Entities;
 
-namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Service.Contracts
+namespace PriceParser.Application.Product.Service.Contracts
 {
 	public interface IProductEntityService : IBaseInternalEntityService<ProductEntity>
 	{

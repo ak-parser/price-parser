@@ -1,7 +1,8 @@
-﻿using Lynkco.Warranty.WebAPI.Data.Common.Const;
+﻿using Lynkco.Warranty.WebAPI.Infrastructure.Common.RequestPolicies;
 using Microsoft.Extensions.DependencyInjection;
+using PriceParser.Data.Common.Const;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.RequestPolicies.Config
+namespace PriceParser.Infrastructure.Common.RequestPolicies.Config
 {
 	public static class HttpRetryPolicyConfigRegistrator
 	{

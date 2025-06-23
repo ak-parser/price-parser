@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Entities;
+﻿using PriceParser.Domain.Common.Entities;
 
-namespace Lynkco.Warranty.WebAPI.Domain.VehicleWarranty.Entities
+namespace PriceParser.Domain.Product.Entities
 {
 	public class ProductEntity : BaseEntity
 	{

@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Services.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
+﻿using PriceParser.Application.Common.Services.Contracts;
+using PriceParser.Domain.User.Entity;
 
-namespace Lynkco.Warranty.WebAPI.Application.User.Service.Contracts
+namespace PriceParser.Application.User.Service.Contracts
 {
 	public interface IUserManagementEntityService : IBaseInternalEntityService<UserEntity>
 	{

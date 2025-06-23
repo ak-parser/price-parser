@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
 using Microsoft.Extensions.Configuration;
+using PriceParser.Data.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings
+namespace PriceParser.Infrastructure.Common.Config.Settings
 {
 	public class CosmosDbSettings : ICosmosDbSettings
 	{

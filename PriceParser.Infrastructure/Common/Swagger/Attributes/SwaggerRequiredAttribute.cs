@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Attributes
+namespace PriceParser.Infrastructure.Common.Swagger.Attributes
 {
 	[ExcludeFromCodeCoverage]
 	[AttributeUsage(AttributeTargets.Property)]

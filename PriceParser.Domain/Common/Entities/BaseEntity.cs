@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Domain.Common.Entities.Contracts;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using PriceParser.Domain.Common.Entities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Domain.Common.Entities
+namespace PriceParser.Domain.Common.Entities
 {
 	public class BaseEntity : IEntity
 	{

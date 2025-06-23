@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.AzureEventGrid.Service.Contracts
+﻿namespace PriceParser.Application.Common.AzureEventGrid.Service.Contracts
 {
 	public interface IEventGridService
 	{

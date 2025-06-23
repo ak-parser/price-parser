@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Lynkco.Warranty.WebAPI.Application.VehicleWarranty.Events.Const
+namespace PriceParser.Application.Product.Events.Const
 {
 	public enum ProductEventType
 	{

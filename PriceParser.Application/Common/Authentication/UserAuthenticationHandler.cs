@@ -1,14 +1,14 @@
 ﻿using System.Security.Claims;
-using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Contracts;
-using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Settings.Models;
-using Lynkco.Warranty.WebAPI.Application.Comparers.Contracts;
-using Lynkco.Warranty.WebAPI.Application.User.Service.Contracts;
-using Lynkco.Warranty.WebAPI.Data.Common.Utilities.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
-using Lynkco.Warranty.WebAPI.Domain.User.Repository.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using PriceParser.Application.Common.Authentication.Contracts;
+using PriceParser.Application.Common.Authentication.Settings.Models;
+using PriceParser.Application.Comparers.Contracts;
+using PriceParser.Application.User.Service.Contracts;
+using PriceParser.Data.Common.Utilities.Contracts;
+using PriceParser.Domain.User.Entity;
+using PriceParser.Domain.User.Repository.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Authentication
+namespace PriceParser.Application.Common.Authentication
 {
 	public class UserAuthenticationHandler : IUserAuthenticationHandler
 	{

@@ -6,6 +6,9 @@ trigger:
   - main
   - release/*
 
+pool:
+  vmImage: "windows-latest"
+
 resources:
   - repo: self
 
@@ -14,7 +17,7 @@ variables:
   solution: "Lynkco.Warranty.WebAPI"
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: "d24170fb-cbe7-4823-9c65-cf0ee925a342"
+  dockerRegistryServiceConnection: "lnc-warranty-acr"
   containerRegistry: "lncacr.azurecr.io"
   tag: "$(Build.BuildId)"
 
@@ -23,10 +26,6 @@ variables:
   externalProject: "$(solution).External"
   swaggerWarrantyVersion: "warranty-pre-approval-v1"
   swaggerVehicleVersion: "vehicle-warranty-v1"
-
-  # Agent VM image name
-  # vmImageName: 'ubuntu-latest'
-  vmImage: windows-latest
 
 parameters:
   # Web API projects params
@@ -71,6 +70,8 @@ stages:
       - ${{ each project in parameters.webApiProjects }}:
           - job:
             displayName: "Build ${{ project.displayName }} Docker image"
+            pool:
+              vmImage: ubuntu-latest
             steps:
               - task: Docker@2
                 displayName: "${{ project.displayName }} - Build and push an image to container registry"
@@ -89,8 +90,6 @@ stages:
     jobs:
       - job: generate_swagger_files_external_api
         displayName: "Generate swagger.json files for External API"
-        pool:
-          vmImage: windows-latest
         variables:
           - group: EXTERNAL_API
         steps:
@@ -198,24 +197,47 @@ stages:
               PathtoPublish: "$(Build.ArtifactStagingDirectory)/Bicep/"
               artifactName: "bicep"
 
-  - stage: run_tests_publish_code_coverage_release
-    displayName: "Run tests and publish code coverage results from the release branch"
+  - stage: finish_pipeline
+    displayName: "Finish pipeline"
     jobs:
-      - job:
-        displayName: "Run tests and publish code coverage results from the release branch"
-        condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')
+      - job: run_analysis_publish_results
+        displayName: "Run analysis and publish results"
         steps:
+          - task: SonarCloudPrepare@2
+            displayName: "Prepare analysis on SonarCloud"
+            inputs:
+              SonarCloud: 'SonarCloud-Lynk'
+              organization: 'reaktor-lynkco'
+              scannerMode: 'MSBuild'
+              projectKey: 'Reaktor-LynkCo_Lynkco.Warranty.WebAPI'
+              projectName: 'Lynkco.Warranty.WebAPI'
+              extraProperties: |
+                # Additional properties that will be passed to the scanner, 
+                # Put one key=value per line, example:
+                # sonar.exclusions=**/coverlet/**
+                sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/**/coverage.opencover.xml
+
           - task: DotNetCoreCLI@2
             displayName: "Run tests and collect code coverage"
             inputs:
               command: test
               projects: "**/*Test/*.csproj"
-              arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+              arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover'
+
+          - task: SonarCloudAnalyze@2
+            displayName: "Run Code Analysis"
+            inputs:
+              jdkversion: 'JAVA_HOME_17_X64'
+
+          - task: SonarCloudPublish@2
+            displayName: "Publish Quality Gate Result"
+            inputs:
+              pollingTimeoutSec: '300'
 
           - task: reportgenerator@5
             displayName: Create reports
             inputs:
-              reports: "$(Agent.TempDirectory)/**/coverage.cobertura.xml"
+              reports: "$(Agent.TempDirectory)/**/coverage.opencover.xml"
               targetdir: "$(Build.SourcesDirectory)/coverlet/reports"
 
           - task: PublishCodeCoverageResults@1

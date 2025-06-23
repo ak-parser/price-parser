@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Common.Mapper.Contracts;
+﻿using PriceParser.Application.Common.Mapper.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Application.Common.Mapper
+namespace PriceParser.Application.Common.Mapper
 {
 	public abstract class MapperBase<TSource, TDestination> : IMapper<TSource, TDestination>
 	{

@@ -1,14 +1,14 @@
 ﻿using System.Reflection;
 using Hellang.Middleware.ProblemDetails;
 using Hellang.Middleware.ProblemDetails.Mvc;
-using Lynkco.Warranty.WebAPI.Application.Common.Authentication.Contracts;
-using Lynkco.Warranty.WebAPI.Host.Common.Config.Dependencies;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Middleware;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Swagger.Utilities;
-using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Identity.Web;
+using PriceParser.Application.Common.Authentication.Contracts;
+using PriceParser.Host.Common.Config.Dependencies;
+using PriceParser.Infrastructure.Common.Middleware;
+using PriceParser.Infrastructure.Common.Swagger.Utilities;
+using PriceParser.Infrastructure.Common.Utilities.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Handlers.Contracts
+﻿namespace PriceParser.Application.Common.Handlers.Contracts
 {
 	public interface IFillingHandler<TSource, TDestination>
 	{

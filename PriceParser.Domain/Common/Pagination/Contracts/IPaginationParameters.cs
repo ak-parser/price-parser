@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Domain.Common.Pagination.Contracts
+﻿namespace PriceParser.Domain.Common.Pagination.Contracts
 {
 	public interface IPaginationParameters
 	{

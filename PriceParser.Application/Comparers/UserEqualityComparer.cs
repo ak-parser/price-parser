@@ -1,7 +1,7 @@
-﻿using Lynkco.Warranty.WebAPI.Application.Comparers.Contracts;
-using Lynkco.Warranty.WebAPI.Domain.User.Entity;
+﻿using PriceParser.Application.Comparers.Contracts;
+using PriceParser.Domain.User.Entity;
 
-namespace Lynkco.Warranty.WebAPI.Application.Comparers
+namespace PriceParser.Application.Comparers
 {
 	public class UserEqualityComparer : IEqualityChecker<UserEntity>
 	{

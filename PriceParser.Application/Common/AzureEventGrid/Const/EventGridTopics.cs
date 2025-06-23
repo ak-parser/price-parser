@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.AzureEventGrid.Const
+﻿namespace PriceParser.Application.Common.AzureEventGrid.Const
 {
 	public static class EventGridTopics
 	{

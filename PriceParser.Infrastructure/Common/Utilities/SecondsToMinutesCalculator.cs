@@ -1,6 +1,6 @@
-﻿using Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities.Contracts;
+﻿using PriceParser.Infrastructure.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Utilities
+namespace PriceParser.Infrastructure.Common.Utilities
 {
 	public class SecondsToMinutesCalculator : ISecondsToMinutesCalculator
 	{

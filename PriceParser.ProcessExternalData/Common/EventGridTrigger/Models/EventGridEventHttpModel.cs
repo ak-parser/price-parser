@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Lynkco.Warranty.WebAPI.ProcessExternalData.Common.EventGridTrigger.Models
+namespace PriceParser.ProcessExternalData.Common.EventGridTrigger.Models
 {
 	public class EventGridEventHttpModel<TData>
 	{

@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
-using Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts;
 using Microsoft.Extensions.Configuration;
+using PriceParser.Application.Common.Utilities.Contracts;
 
-namespace Lynkco.Warranty.WebAPI.Infrastructure.Common.Config.Settings
+namespace PriceParser.Infrastructure.Common.Config.Settings
 {
 	public class AppHostSettings : IAppHostSettings
 	{

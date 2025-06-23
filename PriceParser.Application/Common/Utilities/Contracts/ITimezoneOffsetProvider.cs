@@ -1,4 +1,4 @@
-﻿namespace Lynkco.Warranty.WebAPI.Application.Common.Utilities.Contracts
+﻿namespace PriceParser.Application.Common.Utilities.Contracts
 {
 	public interface ITimezoneOffsetProvider
 	{
